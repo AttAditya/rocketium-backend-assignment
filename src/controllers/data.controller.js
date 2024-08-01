@@ -1,8 +1,29 @@
-const { generateID } = require('../utils');
+const { generateID, stringSort, numberSort } = require('../utils');
 const database = require('../database');
 
 let getAll = (req, res) => {
-    let resultData = database.getAll();
+    let resultData = Object.values(database.getAll());
+
+    if (req.query.sort) {
+        let field = req.query.sort;
+
+        if (field === "name") {
+            resultData.sort((a, b) => stringSort(a.name, b.name));
+        }
+
+        if (field === "language") {
+            resultData.sort((a, b) => stringSort(a.language, b.language));
+        }
+
+        if (field === "version") {
+            resultData.sort((a, b) => numberSort(a.version, b.version));
+        }
+
+        if (["true", ""].includes(req.query.desc?.toLowerCase())) {
+            resultData.reverse();
+        }
+    }
+
     res.json(resultData);
 };
 
