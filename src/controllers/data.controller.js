@@ -4,6 +4,21 @@ const database = require('../database');
 let getAll = (req, res) => {
     let resultData = Object.values(database.getAll());
 
+    if (req.query.name) {
+        let name = req.query.name.toLowerCase();
+        resultData = resultData.filter(item => item.name.toLowerCase().includes(name));
+    }
+
+    if (req.query.language || req.query.lang) {
+        let language = req.query.language?.toLowerCase() || req.query.lang?.toLowerCase();
+        resultData = resultData.filter(item => item.language.toLowerCase().includes(language));
+    }
+
+    if (req.query.version || req.query.ver) {
+        let version = parseFloat(req.query.version || req.query.ver);
+        resultData = resultData.filter(item => item.version === version);
+    }
+
     if (req.query.sort) {
         let field = req.query.sort;
 
