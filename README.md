@@ -147,10 +147,6 @@ The API supports basic filtering and sorting of the data on the read request. Qu
 
 The project includes error handling for invalid requests, missing data, and other edge cases. The server responds with appropriate status codes and error messages.
 
-## Submission
-
-The project is hosted on [GitHub](<repository-url>). The REST API documentation is provided via [Postman](<postman-documentation-link>).
-
 ## Evaluation Criteria
 
 - **Code Quality:** Clean, maintainable, and well-documented code.
