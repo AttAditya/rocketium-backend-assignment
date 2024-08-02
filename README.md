@@ -41,6 +41,11 @@ This assignment aims to evaluate fundamental skills in Node.js, API handling, an
 2. **Data Initialization:**
    - An initialization script imports the dummy data the first time the project is initialized.
 
+3. **Data Storage:**
+    - The data is not stored being stored anywhere. It is fetched from the URL every time the server is started.
+    - The data is stored in memory and is lost when the server is stopped.
+    - However, since the database module is implemented like an interface, it can be easily replaced with a database implementation.
+
 ## API Endpoints
 
 ### GET `/api/data`
